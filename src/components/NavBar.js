@@ -3,10 +3,7 @@ import { makeStyles } from '@mui/styles';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const useStyles = makeStyles((theme) => ({
-    navbar: {
-        backgroundColor: 'black',
-    },
+const useStyles = makeStyles({
     link: {
         textDecoration: 'none',
     },
@@ -14,13 +11,13 @@ const useStyles = makeStyles((theme) => ({
         cursor: 'pointer',
         color: 'white',
     },
-}));
+});
 
 function NavBar() {
     const classes = useStyles();
     return (
-        <AppBar position="fixed">
-            <Toolbar className={classes.navbar}>
+        <AppBar color="secondary" position="fixed">
+            <Toolbar >
                 <Link to="/" className={classes.link}>
                     <Typography className={classes.title} variant="h5">
                         Pokedex
