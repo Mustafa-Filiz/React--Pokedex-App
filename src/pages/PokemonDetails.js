@@ -5,6 +5,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { POKEMON_API_URL } from '../config';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { connect } from 'react-redux'
 
 const useStyles = makeStyles({
     pokemonContainer: {
@@ -102,4 +103,12 @@ function PokemonDetails(props) {
     );
 }
 
-export default PokemonDetails;
+const mapStateToProps = (state) => ({
+    
+})
+
+const mapDispatchToProps = (dispatch) => {
+    
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PokemonDetails);
