@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 	}
 });
 
-function PokemonCard({ pokemon }) {
+function PokemonCard({ pokemon, image }) {
     const { id, name, url } = pokemon;
     const classes = useStyles();
 
@@ -28,7 +28,7 @@ function PokemonCard({ pokemon }) {
         <Grid item xs={12} sm={4} md={2}>
             <Link to={"/pokemon/" + id} className={classes.link}>
                 <Card className={classes.Card}>
-                    <CardMedia className={classes.CardMedia} image={url} />
+                    <CardMedia className={classes.CardMedia} image={image ? image : url} />
                     <CardContent className={classes.content}>
                         <Typography variant="h6">{name}</Typography>
                     </CardContent>
