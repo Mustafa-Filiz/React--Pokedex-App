@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 const useStyles = makeStyles({
     link: {
         textDecoration: 'none',
+        margin: 10,
     },
     title: {
         cursor: 'pointer',
@@ -17,10 +18,15 @@ function NavBar() {
     const classes = useStyles();
     return (
         <AppBar color="secondary" position="fixed">
-            <Toolbar >
+            <Toolbar>
                 <Link to="/" className={classes.link}>
-                    <Typography className={classes.title} variant="h5">
+                    <Typography className={classes.title} variant="h4">
                         Pokedex
+                    </Typography>
+                </Link>
+                <Link to="/favourites" className={classes.link}>
+                    <Typography className={classes.title} variant="h6">
+                        Favourites
                     </Typography>
                 </Link>
             </Toolbar>
