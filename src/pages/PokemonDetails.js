@@ -5,7 +5,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { POKEMON_API_URL } from '../config';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { toggleFavourite } from '../redux/Action';
 
 const useStyles = makeStyles({
     pokemonContainer: {
@@ -41,6 +42,14 @@ function PokemonDetails(props) {
         axios.get(POKEMON_API_URL + id).then((res) => setPokemon(res?.data));
     }, []);
 
+    const favouriteChecker = (id) => {
+        let found = false;
+        props.favourites?.map((fav) => (found = fav.id === id ? true : false));
+        return found
+    };
+
+    console.log(props.favourites);
+
     return (
         <Box>
             {pokemon ? (
@@ -57,9 +66,18 @@ function PokemonDetails(props) {
                     <Box className={classes.pokemonInfo}>
                         <Grid container>
                             <Grid item md={1}>
-                                <IconButton size="large">
+                                <IconButton
+                                    size="large"
+                                    onClick={() =>
+                                        props.toggleFavourite(pokemon)
+                                    }
+                                >
                                     <FavoriteIcon
-                                        color="error"
+                                        color={
+                                            favouriteChecker(pokemon.id)
+                                                ? 'error'
+                                                : 'action'
+                                        }
                                         fontSize="large"
                                     />
                                 </IconButton>
@@ -104,11 +122,11 @@ function PokemonDetails(props) {
 }
 
 const mapStateToProps = (state) => ({
-    
-})
+    favourites: state.favourites,
+});
 
-const mapDispatchToProps = (dispatch) => {
-    
-}
+const mapDispatchToProps = (dispatch) => ({
+    toggleFavourite: (pokemon) => dispatch(toggleFavourite(pokemon)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(PokemonDetails);
