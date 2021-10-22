@@ -25,7 +25,7 @@ function PokemonCard({ pokemon }) {
     const classes = useStyles();
 
     return (
-        <Grid item xs={12} sm={2}>
+        <Grid item xs={12} sm={4} md={2}>
             <Link to={"/pokemon/" + id} className={classes.link}>
                 <Card className={classes.Card}>
                     <CardMedia className={classes.CardMedia} image={url} />
