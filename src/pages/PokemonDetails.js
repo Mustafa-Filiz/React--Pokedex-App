@@ -44,11 +44,13 @@ function PokemonDetails(props) {
 
     const favouriteChecker = (id) => {
         let found = false;
-        props.favourites?.map((fav) => (found = fav.id === id ? true : false));
+        props.favourites?.map((fav) => {
+            if (fav.id === id) {
+                found = true
+            }
+        });
         return found
     };
-
-    console.log(props.favourites);
 
     return (
         <Box>
